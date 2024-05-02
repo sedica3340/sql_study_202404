@@ -259,3 +259,22 @@ FROM tb_emp A
 NATURAL JOIN tb_dept B
 ;
 
+-- # USING절 조인
+-- 1. NATURAL조인에서는 자동으로 이름과 타입이 일치하는 모든 컬럼에 대해
+--    조인이 일어나지만 USING을 사용하면 원하는 컬럼에 대해서면 선택적 조인조건을 
+--    부여할 수 있습니다.
+-- 2. USING절에서도 조인 컬럼에 대해 ALIAS나 테이블명을 표기하시면 안됩니다.
+SELECT 
+   A.emp_no, A.emp_nm, dept_cd, B.dept_nm
+FROM tb_emp A
+NATURAL JOIN tb_dept B
+;
+
+SELECT 
+   A.emp_no, A.emp_nm, dept_cd, B.dept_nm
+FROM tb_emp A
+INNER JOIN tb_dept B
+USING (dept_cd)
+;
+
+
